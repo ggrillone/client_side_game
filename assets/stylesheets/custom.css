@@ -1,0 +1,33 @@
+body {
+	margin: 0 auto;
+	font-size: 16pt;
+	font-family: sans-serif;
+}
+
+.container {
+	margin: 0 auto;
+}
+
+#game_container {
+	border: 1px #000 solid;
+	height: 500px;
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 800px;
+}
+
+.container h1 { text-align: center;}
+
+
+/* Player character */
+
+#main_character {
+	position: relative;
+	top: 400px;
+}
+
+
+/* Enemies */
+.enemy {
+	position: absolute;
+}
