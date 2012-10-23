@@ -1,0 +1,3 @@
+2012-23-10 14:33
+
+	Over the past month I began experimenting the HTML5 canvas, creating various functions to draw enemies, shoot bullets, implement collision detection, and implement player movement. Now I am moving towards building different classes to instanstiate different objects such as player objects.
