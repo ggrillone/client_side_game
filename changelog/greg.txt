@@ -1,3 +1,7 @@
+2012-23-10 21:34
+
+	New branch shape-class.  The purpose is to extend the functionality of the Shape class.
+
 2012-23-10 21:33
 
 	New branch development, to merge other branches into master.
