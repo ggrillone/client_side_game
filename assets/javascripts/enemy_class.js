@@ -1,3 +1,7 @@
+/*
+ * The purpose of the Enemy class is to draw an enemy by generating
+ * a new canvas element for the enemy and drawing the enemy shape.
+*/
 var Enemy = function() {
 	// Circle and Square
 	this.canvasElement = null;
@@ -17,32 +21,68 @@ var Enemy = function() {
 // http://www.bennadel.com/blog/2039-Experimenting-With-Multiple-Class-Inheritance-In-Javascript.htm
 
 Enemy.prototype = {
-	init: function(canvasElement, x_value, y_value, width, height, fill_color) {
+	/*
+	 * The init() method for Enemy draws the enemy on the page. By default an enemy is a square.
+	 * @param canvasElement The canvas element to draw the enemy on
+	 * @param x_value The x position of the enemey shape, relative to the canvasElement
+	 * @param y_value The y position of the enemy shape, relative to the canvasElement
+	 * @param width The width of the enemy
+	 * @param height The height of the enemy
+	 * @param fill_color The fill color of the enemy, if this is 'none' then it has no fill color
+	 * @param border_color The color of the border of the enemy, if this is 'none' then it has no border
+	 * @param border_width The thickness of the border
+	*/
+	init: function(canvasElement, x_value, y_value, width, height, fill_color, border_color, border_width) {
 		this.canvasElement = canvasElement;
 		this.x = x_value;
 		this.y = y_value;
 		this.width = width;
 		this.height = height;
 		this.fill_color = fill_color;
+		this.border_color = border_color;
+		this.border_width = border_width;
 
-		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color);
-
-		return(
-			Square.prototype.draw.call(this)
-		);
-	},
-
-	initWithSquare: function(canvasElement, x_value, y_value, width, height, fill_color) {
-		this.init(canvasElement, x_value, y_value, width, height, fill_color);
-
-		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color);
+		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
 
 		return(
 			Square.prototype.draw.call(this)
 		);
 	},
 
-	initWithCircle: function(canvasElement, x_value, y_value, radius, start, stop, fill_color) {
+	/*
+	 * The initWithSquare() method draws a square enemy.
+	 * @param canvasElement The canvas element to draw the enemy on
+	 * @param x_value The x position of the enemey shape, relative to the canvasElement
+	 * @param y_value The y position of the enemy shape, relative to the canvasElement
+	 * @param width The width of the enemy
+	 * @param height The height of the enemy
+	 * @param fill_color The fill color of the enemy, if this is 'none' then it has no fill color
+	 * @param border_color The color of the border of the enemy, if this is 'none' then it has no border
+	 * @param border_width The thickness of the border
+	*/
+	initWithSquare: function(canvasElement, x_value, y_value, width, height, fill_color, border_color, border_width) {
+		this.init(canvasElement, x_value, y_value, width, height, fill_color, border_color, border_width);
+
+		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
+
+		return(
+			Square.prototype.draw.call(this)
+		);
+	},
+
+	/*
+	 * The initWithCircle() method draws a circular enemy.
+	 * @param canvasElement The canvas element to draw the enemy on
+	 * @param x_value The x position of the enemey shape, relative to the canvasElement
+	 * @param y_value The y position of the enemy shape, relative to the canvasElement
+	 * @param radius The radius of the enemy (size)
+	 * @param start The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
+	 * @param stop The ending angle, in radians
+	 * @param fill_color The fill color of the enemy, if this is 'none' then it has no fill color
+	 * @param border_color The color of the border of the enemy, if this is 'none' then it has no border
+	 * @param border_width The thickness of the border
+	*/
+	initWithCircle: function(canvasElement, x_value, y_value, radius, start, stop, fill_color, border_color, border_width) {
 		this.canvasElementID = canvasElement;
 		this.x = x_value;
 		this.y = y_value;
@@ -50,8 +90,10 @@ Enemy.prototype = {
 		this.start = start;
 		this.stop = stop;
 		this.fill_color = fill_color;
+		this.border_color = border_color;
+		this.border_width = border_width;
 
-		Circle.call(this, this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color);
+		Circle.call(this, this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color, this.border_color, this.border_width);
 
 		return(
 			Circle.prototype.draw.call(this)
