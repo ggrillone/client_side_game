@@ -1,3 +1,7 @@
+2012-23-10 21:33
+
+	New branch development, to merge other branches into master.
+
 2012-23-10 19:31
 
 	Refactored some of the code. Also, added comments to all Class files to describe how each class works.
