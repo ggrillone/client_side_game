@@ -10,9 +10,13 @@ $(document).ready(function() {
 	var enemy = new Enemy();
 	enemy.initWithSquare(canvasElem.getCanvas(), 30, 30, 100, 100, "#0F67A1", "red", 5);
 	//enemy.initWithCircle(canvasElem.getCanvas(), 150, 75, 50, 0, 2 * Math.PI, "#0F67A1");
+	enemy.changeFill("red");
+	enemy.changeBorder("green",20);
 
 	var bullet = new Bullet("#game_container", "circle", "#88B541", "red", 5, "enemy_bullet", "up");
 	bullet.shoot();
+	bullet.changeFill("blue");
+	bullet.changeBorder("purple", 7);
 
 	//drawSquare("#main_character",0,0,100,100,"#0F67A1");
 	//loadInitialEnemies();

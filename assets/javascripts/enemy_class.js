@@ -15,6 +15,8 @@ var Enemy = function() {
 	this.radius = null;
 	this.start = null;
 	this.stop = null;
+	// Store the shape object for the Enemy
+	this.shape_object = null;
 };
 
 // Extending and inheriting from multiple classes:
@@ -42,11 +44,8 @@ Enemy.prototype = {
 		this.border_color = border_color;
 		this.border_width = border_width;
 
-		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
-
-		return(
-			Square.prototype.draw.call(this)
-		);
+		this.shape_object = new Square(this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
+		this.shape_object.draw();
 	},
 
 	/*
@@ -62,12 +61,6 @@ Enemy.prototype = {
 	*/
 	initWithSquare: function(canvasElement, x_value, y_value, width, height, fill_color, border_color, border_width) {
 		this.init(canvasElement, x_value, y_value, width, height, fill_color, border_color, border_width);
-
-		Square.call(this, this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
-
-		return(
-			Square.prototype.draw.call(this)
-		);
 	},
 
 	/*
@@ -93,16 +86,29 @@ Enemy.prototype = {
 		this.border_color = border_color;
 		this.border_width = border_width;
 
-		Circle.call(this, this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color, this.border_color, this.border_width);
+		this.shape_object = new Circle(this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color, this.border_color, this.border_width);
+		this.shape_object.draw();
+		},
 
-		return(
-			Circle.prototype.draw.call(this)
-		);
+	/*
+	 * Calls to Square/Circle Class methods
+	*/
+
+	// set fill color
+	changeFill: function(fill_color) {
+		this.shape_object.changeFill(fill_color);
+	},
+
+	// set border color
+	changeBorder: function(border_color, border_width) {
+		this.shape_object.changeBorder(border_color,border_width);
 	}
+
 };
 
 Enemy.prototype = $.extend(
 	{},
+	Shape.prototype,
 	Square.prototype,
 	Circle.prototype,
 	Enemy.prototype

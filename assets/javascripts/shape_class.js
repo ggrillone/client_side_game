@@ -39,7 +39,13 @@ $.extend(Shape.prototype, {
 		return this.canvasElement;
 	},
 
-	// Returns the canvas object
+	/*
+	 ********************
+	 * Getter & Setters *
+	 ********************
+	*/
+
+	// get canvas element
 	getCanvas: function() {
 		return this.canvasElement;
 	}
