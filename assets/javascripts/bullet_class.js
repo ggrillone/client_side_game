@@ -20,6 +20,8 @@ var Bullet = function(appendToElement, shape, fill_color, border_color, border_w
 	this.radius = 25;
 	this.height = 50;
 	this.width = null;
+	// Store the shape object for the Enemy
+	this.shape_object = null;
 
 	if(this.shape == "circle") {
 		this.width = 100;
@@ -44,10 +46,8 @@ Bullet.prototype = {
 	*/
 	drawBullet: function(canvasElement) {
 		if(this.shape == "circle") {
-			Circle.call(this, canvasElement, this.width / 2, this.height / 2, this.radius, 0, 2 * Math.PI, this.fill_color, this.border_color, this.border_width);
-			return (
-				Circle.prototype.drawWithObject.call(this)
-			);
+			this.shape_object = new Circle(canvasElement, this.width * 1.5, this.height * 1.5, this.radius, 0, 2 * Math.PI, this.fill_color, this.border_color, this.border_width);
+			this.shape_object.draw();
 		}
 		else if(this.shape == "square") {
 
@@ -62,6 +62,12 @@ Bullet.prototype = {
 		var bullet_canvas = this.makeCanvas();
 		this.drawBullet(bullet_canvas);
 	},
+
+	/*
+	 ********************
+	 * Getter & Setters *
+	 ********************
+	*/
 
 	// Setter method for setting the height of the bullet
 	setHeight: function(height) {
@@ -83,6 +89,20 @@ Bullet.prototype = {
 	// Setter method for setting the direction of the bullet
 	setBulletDirection: function(direction) {
 		this.bullet_direction = direction;
+	},
+
+	/*
+	 * Calls to Square/Circle Class methods
+	*/
+
+	// set fill color
+	changeFill: function(fill_color) {
+		this.shape_object.changeFill(fill_color);
+	},
+
+	// set border color
+	changeBorder: function(border_color, border_width) {
+		this.shape_object.changeBorder(border_color,border_width);
 	}
 };
 

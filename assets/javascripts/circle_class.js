@@ -41,20 +41,24 @@ $.extend(Circle.prototype, {
 		}
 	},
 
-	// Draw a circle
-	drawWithObject: function() {
-		var canvas_element = $(this.canvasElement);
-		var ctx = canvas_element[0].getContext("2d");
-		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.radius, this.start, this.stop);
-		if(this.fill_color != "none") {
-			ctx.fillStyle = this.fill_color;
-			ctx.fill();
-		}
-		if(this.border_color != "none") {
-			ctx.lineWidth = this.border_width;
-			ctx.strokeStyle = this.border_color;
-			ctx.stroke();
-		}
+	/*
+	 ********************
+	 * Getter & Setters *
+	 ********************
+	*/
+
+	// set fill color
+	changeFill: function(fill_color) {
+		this.fill_color = fill_color;
+
+		this.draw();
+	},
+
+	// set border color and width
+	changeBorder: function(border_color, border_width) {
+		this.border_color = border_color;
+		this.border_width = border_width;
+
+		this.draw();
 	}
 });

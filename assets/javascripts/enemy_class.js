@@ -15,8 +15,8 @@ var Enemy = function() {
 	this.radius = null;
 	this.start = null;
 	this.stop = null;
-	// Store the shape
-	this.shape = null;
+	// Store the shape object for the Enemy
+	this.shape_object = null;
 };
 
 // Extending and inheriting from multiple classes:
@@ -44,8 +44,8 @@ Enemy.prototype = {
 		this.border_color = border_color;
 		this.border_width = border_width;
 
-		this.shape = new Square(this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
-		this.shape.draw();
+		this.shape_object = new Square(this.canvasElement, this.x, this.y, this.width, this.height, this.fill_color, this.border_color, this.border_width);
+		this.shape_object.draw();
 	},
 
 	/*
@@ -86,22 +86,22 @@ Enemy.prototype = {
 		this.border_color = border_color;
 		this.border_width = border_width;
 
-		this.shape = new Circle(this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color, this.border_color, this.border_width);
-		this.shape.draw();
+		this.shape_object = new Circle(this.canvasElement, this.x, this.y, this.radius, this.start, this.stop, this.fill_color, this.border_color, this.border_width);
+		this.shape_object.draw();
 		},
 
 	/*
-	 * Calls to Square Class methods
+	 * Calls to Square/Circle Class methods
 	*/
 
 	// set fill color
 	changeFill: function(fill_color) {
-		this.shape.changeFill(fill_color);
+		this.shape_object.changeFill(fill_color);
 	},
 
 	// set border color
 	changeBorder: function(border_color, border_width) {
-		this.shape.changeBorder(border_color,border_width);
+		this.shape_object.changeBorder(border_color,border_width);
 	}
 
 };

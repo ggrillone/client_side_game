@@ -1,4 +1,8 @@
-2012-10-14 20:26
+2012-10-25 9:25
+
+	Refactor changeFill and changeBorder methods for Square class. Add changeFill and changeBorder methods to Circle class.
+
+2012-10-24 20:26
 
 	Add methods to change fill color and border color for square shapes.
 
