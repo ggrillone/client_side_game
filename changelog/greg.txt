@@ -1,15 +1,19 @@
-2012-23-10 21:34
+2012-10-14 20:26
+
+	Add methods to change fill color and border color for square shapes.
+
+2012-10-23 21:34
 
 	New branch shape-class.  The purpose is to extend the functionality of the Shape class.
 
-2012-23-10 21:33
+2012-10-23 21:33
 
 	New branch development, to merge other branches into master.
 
-2012-23-10 19:31
+2012-10-23 19:31
 
 	Refactored some of the code. Also, added comments to all Class files to describe how each class works.
 
-2012-23-10 14:33
+2012-10-23 14:33
 
 	Over the past month I began experimenting the HTML5 canvas, creating various functions to draw enemies, shoot bullets, implement collision detection, and implement player movement. Now I am moving towards building different classes to instanstiate different objects such as player objects.

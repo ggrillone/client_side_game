@@ -27,7 +27,6 @@ Square.prototype = {
 	draw: function() {
 		var canvas_element = $(this.canvasElement);
 		var ctx = canvas_element[0].getContext("2d");
-		ctx.save();
 
 		if(this.border_color != "none") {
 			ctx.lineWidth = this.border_width;
@@ -38,7 +37,51 @@ Square.prototype = {
 			ctx.fillStyle = this.fill_color;
 			ctx.fillRect(this.x, this.y, this.width, this.height);
 		}
-		ctx.restore();
+	},
+
+	/*
+	 ********************
+	 * Getter & Setters *
+	 ********************
+	*/
+
+	// set fill color
+	changeFill: function(fill_color) {
+		this.fill_color = fill_color;
+
+		var canvas_element = this.getCanvas();
+		var ctx = canvas_element[0].getContext("2d");
+		ctx.clearRect(this.x_value, this.y_value, this.width, this.height);
+		
+		if(this.border_color != "none") {
+			ctx.lineWidth = this.border_width;
+			ctx.strokeStyle = this.border_color;
+			ctx.strokeRect(this.x, this.y, this.width, this.height);
+		}
+		if(this.fill_color != "none") {
+			ctx.fillStyle = this.fill_color;
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
+	},
+
+	// set border color and width
+	changeBorder: function(border_color, border_width) {
+		this.border_color = border_color;
+		this.border_width = border_width;
+
+		var canvas_element = this.getCanvas();
+		var ctx = canvas_element[0].getContext("2d");
+		ctx.clearRect(this.x_value, this.y_value, this.width, this.height);
+		
+		if(this.border_color != "none") {
+			ctx.lineWidth = this.border_width;
+			ctx.strokeStyle = this.border_color;
+			ctx.strokeRect(this.x, this.y, this.width, this.height);
+		}
+		if(this.fill_color != "none") {
+			ctx.fillStyle = this.fill_color;
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
 	}
 };
 
